@@ -41,6 +41,9 @@ tutor/
 │           ├── understanding.md
 │           ├── sources.md
 │           └── digest.md
+├── tools/map-viewer/                 # optional local viewer for the map (host-side, read-only)
+│   ├── map_viewer.py
+│   └── index.html
 └── README.md
 ```
 
@@ -76,6 +79,20 @@ memory/
 
 It's plain Markdown in the Open Knowledge Format, so you can read it, edit it, or point another
 tool at it. `skills/tutor/references/learner-model.md` has the exact shape.
+
+### See the map
+
+`tools/map-viewer/` is a small local viewer (Python 3 standard library, one HTML page) that
+renders the memory folder as a live graph: concepts coloured by status, prerequisite and
+related links, open threads and saved sources in a side panel, refreshed every few seconds as
+the agent writes. Run it on the host:
+
+```bash
+python3 lifestyle/tutor/tools/map-viewer/map_viewer.py <nanoclaw>/groups/<folder>/memory 8787
+open http://127.0.0.1:8787/
+```
+
+It reads files only; it never writes to memory and the agent doesn't know it exists.
 
 ## Services and credentials
 
